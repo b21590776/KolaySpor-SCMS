@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>VIP Courses</h1>
+    <p style="font-size: x-large">Date : <span th:text="${time}"></span></p>
+    <form th:action="@{/trainer/delete-vip-course}" th:method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Select</th>
+                <th>Activity Name</th>
+                <th>Creater</th>
+                <th>Registered Person Name</th>
+                <th>Time</th>
+                <th>Available</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vC: ${vipCourses}">
+                <td><input type="checkbox" name="id" th:value="${vC.id}"></td>
+                <td th:text="${vC.vipCourseName}"></td>
+                <td th:text="${vC.creater}">Time</td>
+                <td th:text="${vC.registeredBy}"></td>
+                <td th:text="${vC.time}">Time</td>
+                <td th:text="${vC.available}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="date" th:value="${minDate}">
+        <input type="submit" class="btn btn-default" value="Delete Activity">
+    </form>
+    <br/>
+    <hr>
+    <form th:action="@{/trainer/add-vip-course}" th:method="post">
+        <label for="vipCourseName">Name : </label>
+        <input style="width: 160px" id="vipCourseName" type="text" name="vipCourseName" placeholder="Vip Course Name" class="form-control">
+        <br/>
+        <label for="date">Choose Date : </label>
+        <input class="form-control" name="date" style="width: 160px" type="date" id="date">
+        <br/>
+        <label for="time">Choose Time : </label>
+        <input class="form-control" name="hour" style="width: 160px" type="time" id="time">
+        <br/>
+        <input type="submit" class="btn btn-primary" value="Create Activity">
+    </form>
+    <br/>
+    <hr>
+    <form th:action="@{/trainer/manage-activities}" method="post">
+        <label for="datex">Choose Date:</label> <input style="height: 40px" type="date" name="date" id="datex" th:min="${minDate}">
+        <input type="submit" class="btn btn-primary" value="Get Activities">
+    </form>
+    <br>
+    <div>
+        <p style="color: red;font-weight: bolder" th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>Vip Courses</h1>
+    <p style="font-size: x-large">Date : <span th:text="${time}"></span></p>
+    <form th:action="@{/vip/manage-courses}" method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Select</th>
+                <th>Activity Name</th>
+                <th>Creater</th>
+                <th>Registred Person Name</th>
+                <th>Time</th>
+                <th>Available</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="vC: ${vipCourses}">
+                <td><input type="checkbox" name="id" th:value="${vC.id}"></td>
+                <td th:text="${vC.vipCourseName}"></td>
+                <td th:text="${vC.creater}">Time</td>
+                <td th:text="${vC.registeredBy}"></td>
+                <td th:text="${vC.time}">Time</td>
+                <td th:text="${vC.available}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="hidden" name="date" th:value="${time}">
+        <input type="submit" name="submitType" class="btn btn-default" value="Register">
+        <input type="submit" name="submitType" class="btn btn-default" value="Delete">
+    </form>
+    <br>
+    <form th:action="@{/vip/vip-courses}" method="post">
+        <label for="date">Choose Date:</label> <input style="height: 40px" type="date" name="date" id="date" th:min="${minDate}">
+        <input type="submit" class="btn btn-primary" value="Get Vip Courses">
+    </form>
+    <br>
+    <div>
+        <p style="color: red;font-weight: bolder" th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="246.0" y="0.0">com.example.model.Activity</node>
+    <node x="692.0" y="853.0">com.example.repository.AktivityRepository</node>
+    <node x="10.5" y="700.0">com.example.service.ActivityService</node>
+    <node x="0.0" y="0.0">com.example.model.User</node>
+    <node x="515.0" y="123.0">com.example.service.UserServiceImpl</node>
+    <node x="191.0" y="700.0">com.example.configuration.WebMvcConfig</node>
+    <node x="0.0" y="779.0">com.example.service.ActivityServiceImp</node>
+    <node x="0.0" y="853.0">com.example.repository.UserRepository</node>
+    <node x="478.0" y="853.0">com.example.DemoApplication</node>
+    <node x="242.0" y="853.0">com.example.repository.RoleRepository</node>
+    <node x="0.0" y="471.0">com.example.configuration.SecurityConfiguration</node>
+    <node x="538.0" y="700.0">com.example.controller.GlobalController</node>
+    <node x="375.0" y="471.0">com.example.model.Role</node>
+    <node x="592.0" y="471.0">com.example.controller.LoginController</node>
+    <node x="570.0" y="0.0">com.example.service.UserService</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="com.example.service.UserServiceImpl" target="com.example.service.UserService">
+      <point x="0.0" y="-70.0" />
+      <point x="0.0" y="36.5" />
+    </edge>
+    <edge source="com.example.service.ActivityServiceImp" target="com.example.service.ActivityService">
+      <point x="0.0" y="-14.5" />
+      <point x="0.0" y="14.5" />
+    </edge>
+  </edges>
+  <settings layout="Hıerarchıc Group" zoom="1.0" x="0.0" y="0.0" />
+  <SelectedNodes>
+    <node>com.example.service.UserService</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

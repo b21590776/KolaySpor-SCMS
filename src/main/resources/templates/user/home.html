@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container-fluid">
+    <div class="row content">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-sm-12">
+                    <div class="welcome_title">Welcome <span th:text="${fullname}"></span></div>
+                    <div class="title_line"></div>
+                    <div class="welcome_text">You may choose what you want to do.</div>
+                </div>
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="content_box_contain">
+                        <img class="img-responsive" src="/images/program.jpg" alt="">
+
+                        <div class="content_box">
+                            <div class="content_title">FITNESS</div>
+                            <ul class="content_nav">
+                                <li><a href="/user/activities" target="_blank">• Program</a></li>
+                                <li sec:authorize="hasAuthority('VIP')"><a href="/vip/vip-courses">• VIP (PT)</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-6 col-sm-6">
+                    <div class="content_box_contain">
+                        <img class="img-responsive" src="/images/account.jpg" alt="">
+
+                        <div class="content_box">
+                            <div class="content_title">MEMBERSHIP PROCESSES</div>
+                            <ul class="content_nav">
+                                <li><a href="/user/add-balance" onclick="">• Add Balance</a></li>
+                                <li><a href="/user/user-account" onclick="">• My Account</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

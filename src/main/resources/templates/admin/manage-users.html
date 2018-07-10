@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>Manage Users</h1>
+    <form th:action="@{/admin/manage-users}" method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Choose</th>
+                <th>Member ID</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Branch</th>
+                <th>Rank</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${users}">
+                <td><input type="checkbox" name="id" th:value="${user.id}"></td>
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.fullname}">User Full Name</td>
+                <td th:text="${user.email}">User email</td>
+                <td th:text="${user.branchName}"></td>
+                <td th:each="rl : ${user.getRoles()}">
+                    <span th:text="${rl.role}"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" name="submitType" class="btn btn-default" value="Make Regular Member">
+        <input type="submit" name="submitType" class="btn btn-success" value="Make VIP">
+        <input type="submit" name="submitType" class="btn btn-primary" value="Make Trainer">
+        <input type="submit" name="submitType" class="btn btn-primary" value="Make Manager">
+        <input type="submit" name="submitType" class="btn btn-info" value="Make Admin">
+        <input type="submit" name="submitType" class="btn btn-danger" value="Ban">
+    </form>
+</div>
+</body>
+</html>

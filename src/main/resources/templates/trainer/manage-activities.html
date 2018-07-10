@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>Activities</h1>
+    <p style="font-size: x-large">Date : <span th:text="${time}"></span></p>
+    <form th:action="@{/trainer/delete-activities}" th:method="post">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Choose</th>
+            <th>Activity Name</th>
+            <th>Creater</th>
+            <th>Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="activity: ${activities}">
+            <td><input type="checkbox" name="id" th:value="${activity.id}"></td>
+            <td th:text="${activity.activity_name}"></td>
+            <td th:text="${activity.creater}">Time</td>
+            <td th:text="${activity.time}">Time</td>
+        </tr>
+        </tbody>
+    </table>
+        <input type="hidden" name="date" th:value="${minDate}">
+        <input type="submit" class="btn btn-default" value="Delete Activity">
+    </form>
+    <br/>
+    <hr>
+    <form th:action="@{/trainer/add-activity}" th:method="post">
+        <label for="activityName">Name : </label>
+        <input style="width: 160px" id="activityName" type="text" name="activityName" placeholder="Activity Name" class="form-control">
+        <br/>
+        <label for="date">Choose Date : </label>
+        <input class="form-control" name="date" style="width: 160px" type="date" id="date">
+        <br/>
+        <label for="time">Choose Time : </label>
+        <input class="form-control" name="hour" style="width: 160px" type="time" id="time">
+        <br/>
+        <input type="submit" class="btn btn-primary" value="Create Activity">
+    </form>
+    <br/>
+    <hr>
+    <form th:action="@{/trainer/manage-activities}" method="post">
+        <label for="date">Choose Date:</label> <input style="height: 40px" type="date" name="date" id="date" th:min="${minDate}">
+        <input type="submit" class="btn btn-primary" value="Get Activities">
+    </form>
+    <br>
+    <div>
+        <p style="color: red;font-weight: bolder" th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>

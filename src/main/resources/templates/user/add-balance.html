@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <div class="account-wall">
+                <div id="my-tab-content" class="tab-content">
+                    <div class="logo-container" style="margin: 0 auto;width: 200px">
+                        <img src="/images/currencies.png" style="width: 200px;height: 200px">
+                    </div>
+                    <br/>
+                    <div style="text-align: center">
+                        <p style="font-size: larger;">Your Account's Balance = <span style="color:red;" th:text="${balance}"></span> <span style="color: red">₺</span></p>
+                    </div>
+                    <div class="tab-pane active" id="add-balance">
+                        <form class="form-signin" action="/user/add-balance" method="post">
+                            <input type="text" class="form-control" placeholder="The amount you want to add to wallet" name="balance" required autofocus>
+                            <input type="submit" class="btn btn-lg btn-default btn-block" value="Add Balance" />
+                        </form>
+                    </div>
+                    <div style="text-align: center">
+                        <span style="color: red;font-weight: bolder;" th:text="${message}"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

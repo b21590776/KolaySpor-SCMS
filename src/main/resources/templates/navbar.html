@@ -1,0 +1,43 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">KolaySpor</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li sec:authorize="isAnonymous()"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li sec:authorize="isAnonymous()"><a href="/registration"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            <li sec:authorize="isAuthenticated()"><a href="/user/home"><span class="glyphicon glyphicon-user"></span> User</a></li>
+            <li sec:authorize="hasAuthority('TRAINER')">
+                <div class="dropdown">
+                    <div style="margin-top: 15px;margin-right: 10px" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Trainer</div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/trainer/manage-activities">Manage Activities</a>
+                        <a class="dropdown-item" href="/trainer/manage-vip-courses">Manage Vip Courses</a>
+                    </div>
+                </div>
+            </li>
+            <li sec:authorize="hasAuthority('BRANCH MANAGER')">
+                <div class="dropdown">
+                        <div style="margin-top: 15px;margin-right: 10px" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Branch Manager</div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/manager/manage-users">Manage Users</a>
+                    </div>
+                </div>
+            </li>
+            <li sec:authorize="hasAuthority('ADMIN')">
+                <div class="dropdown">
+                    <div style="margin-top: 15px;margin-right: 10px" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> Admin</div>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="/admin/manage-users">Manage Users</a>
+                        <br>
+                        <a class="dropdown-item" href="/admin/manage-branches">Manage Branches</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>Manage Branches</h1>
+    <form th:action="@{/admin/manage-branches}" method="post">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Choose</th>
+                <th>Branch ID</th>
+                <th>Branch Name</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="br : ${branches}">
+                <td><input type="checkbox" name="id" th:value="${br.id}"></td>
+                <td th:text="${br.id}"></td>
+                <td th:text="${br.branchName}">Branch Name</td>
+            </tr>
+            </tbody>
+        </table>
+        <input type="submit" name="submitType" class="btn btn-danger" value="Delete">
+        <input type="submit" name="submitType" class="btn btn-success" value="Change Branch">
+    </form>
+    <br>
+    <hr>
+    <div style="display: inline-block">
+    <form style="display: inline-block" th:action="@{/admin/add-branch}" th:method="post">
+        <label for="branchName">Add New Branch</label>
+        <input type="text" id="branchName" name="branchName" placeholder="BranchName" style="width: 200px" class="form-control">
+        <br>
+        <input type="Submit" class="btn btn-primary" value="Add Branch">
+    </form>
+    </div>
+    <br/>
+    <br/>
+    <span style="color: red;font-weight: bolder" th:text="${message}"></span>
+</div>
+</body>
+</html>

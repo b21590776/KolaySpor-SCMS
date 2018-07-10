@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:include="header"></head>
+<body>
+<div th:include="navbar"></div>
+<div class="container">
+    <h1>Activities</h1>
+    <p style="font-size: x-large">Date : <span th:text="${time}"></span></p>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>Activity Name</th>
+                <th>Creater</th>
+                <th>Time</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="activity: ${activities}">
+                <td th:text="${activity.activity_name}"></td>
+                <td th:text="${activity.creater}">Time</td>
+                <td th:text="${activity.time}">Time</td>
+            </tr>
+            </tbody>
+        </table>
+    <form th:action="@{/user/activities}" method="post">
+        <label for="date">Choose Date:</label> <input style="height: 40px" type="date" name="date" id="date" th:min="${minDate}">
+        <input type="submit" class="btn btn-primary" value="Get Activities">
+    </form>
+    <br>
+    <div>
+        <p style="color: red;font-weight: bolder" th:text="${message}"></p>
+    </div>
+</div>
+</body>
+</html>
